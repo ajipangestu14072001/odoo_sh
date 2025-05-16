@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14
+    container_name: odoo-db-prod
+    environment:
+      POSTGRES_DB: odoo_prod
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: password_baru
+    volumes:
+      - prod_db_data:/var/lib/postgresql/data
+    networks:
+      - prod_net
+
+  odoo:
+    image: odoo:18.0
+    container_name: odoo-app-prod
+    depends_on:
+      - db
+    ports:
+      - "8073:8069"
+    volumes:
+      - ./odoo/addons:/mnt/extra-addons
+      - ./custom_addons:/mnt/custom-addons
+      - ./enterprise:/mnt/enterprise-addons
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: password_baru
+      ODOO_ADDONS_PATH: /mnt/extra-addons,/mnt/custom-addons,/mnt/enterprise-addons
+    networks:
+      - prod_net
+
+volumes:
+  prod_db_data:
+
+networks:
+  prod_net:

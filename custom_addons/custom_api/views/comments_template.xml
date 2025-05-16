@@ -1,0 +1,11 @@
+<odoo>
+  <template id="comments_template" name="Comments Template">
+    <t t-call="web.layout">
+      <t t-set="title">Komentar</t>
+      <div id="comments-list">Memuat komentar...</div>
+
+      <!-- Tambahkan script JS di akhir body -->
+      <script type="text/javascript" src="/custom_api/static/src/js/comments.js"></script>
+    </t>
+  </template>
+</odoo>

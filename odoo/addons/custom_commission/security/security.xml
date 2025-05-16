@@ -1,0 +1,22 @@
+<odoo>
+    <record id="group_sales_user" model="res.groups">
+        <field name="name">Sales User</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+
+    <record id="group_sales_manager" model="res.groups">
+        <field name="name">Sales Manager</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+
+    <!-- Akses untuk Komisi -->
+    <record id="sales_user_access" model="ir.model.access">
+        <field name="name">Sales User Access</field>
+        <field name="model_id" ref="model_x_commission"/>
+        <field name="group_id" ref="group_sales_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+</odoo>

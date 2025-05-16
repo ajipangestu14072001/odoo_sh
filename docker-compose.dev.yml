@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:14
+    container_name: odoo-db-dev
+    environment:
+      POSTGRES_DB: odoo_dev
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: password_baru
+    volumes:
+      - dev_db_data:/var/lib/postgresql/data
+    networks:
+      - dev_net
+
+  odoo:
+    image: odoo:18.0
+    container_name: odoo-app-dev
+    depends_on:
+      - db
+    ports:
+      - "8070:8069"
+    volumes:
+      - ./odoo/addons:/mnt/extra-addons
+      - ./custom_addons:/mnt/custom-addons
+      - ./enterprise:/mnt/enterprise-addons
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: password_baru
+      ODOO_ADDONS_PATH: /mnt/extra-addons,/mnt/custom-addons,/mnt/enterprise-addons
+    networks:
+      - dev_net
+
+volumes:
+  dev_db_data:
+
+networks:
+  dev_net:

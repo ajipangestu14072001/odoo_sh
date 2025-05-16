@@ -1,0 +1,68 @@
+<odoo>
+  <template id="hello_template" name="Dashboard Page">
+    <t t-call="custom_api.custom_base">
+      <!-- HEADER -->
+      <header class="bg-blue-800 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 class="text-2xl font-bold tracking-wide">Dashboard Admin</h1>
+          <nav class="space-x-6 text-sm font-medium">
+            <a href="#" class="hover:text-gray-300 transition">Beranda</a>
+            <a href="#" class="hover:text-gray-300 transition">Pengguna</a>
+            <a href="#" class="hover:text-gray-300 transition">Proyek</a>
+            <a href="#" class="hover:text-gray-300 transition">Laporan</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- METRICS CARD -->
+      <section class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition duration-300">
+            <h2 class="text-sm text-gray-500 uppercase font-semibold">Total Pengguna</h2>
+            <p class="text-5xl font-bold text-blue-700 mt-2">120</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition duration-300">
+            <h2 class="text-sm text-gray-500 uppercase font-semibold">Proyek Aktif</h2>
+            <p class="text-5xl font-bold text-green-600 mt-2">18</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition duration-300">
+            <h2 class="text-sm text-gray-500 uppercase font-semibold">Komentar Masuk</h2>
+            <p class="text-5xl font-bold text-purple-600 mt-2">340</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="bg-blue-900 text-white p-4">
+  Tailwind berhasil dimuat
+</div>
+
+      <!-- GRAFIK (Placeholder) -->
+      <section class="max-w-7xl mx-auto px-4 py-10">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-lg font-semibold text-gray-800 mb-4">Statistik Penggunaan</h2>
+          <div class="bg-gray-100 h-64 flex items-center justify-center text-gray-400 rounded-md">
+            <span>📊 Grafik akan muncul di sini</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOMBOL KOMENTAR -->
+      <div class="text-center my-12">
+        <a href="/custom_api/comments"
+           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition transform hover:-translate-y-0.5">
+          Lihat Komentar Pengguna
+        </a>
+      </div>
+
+      
+
+
+      <!-- FOOTER -->
+      <footer class="bg-blue-900 text-white py-6">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-300">
+          © 2025 Dashboard Admin. All rights reserved.
+        </div>
+      </footer>
+    </t>
+  </template>
+</odoo>

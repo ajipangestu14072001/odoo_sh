@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14
+    container_name: odoo-db-qa
+    environment:
+      POSTGRES_DB: odoo_qa
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: password_baru
+    volumes:
+      - qa_db_data:/var/lib/postgresql/data
+    networks:
+      - qa_net
+
+  odoo:
+    image: odoo:18.0
+    container_name: odoo-app-qa
+    depends_on:
+      - db
+    ports:
+      - "8071:8069"
+    volumes:
+      - ./odoo/addons:/mnt/extra-addons
+      - ./custom_addons:/mnt/custom-addons
+      - ./enterprise:/mnt/enterprise-addons
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: password_baru
+      ODOO_ADDONS_PATH: /mnt/extra-addons,/mnt/custom-addons,/mnt/enterprise-addons
+    networks:
+      - qa_net
+
+volumes:
+  qa_db_data:
+
+networks:
+  qa_net:

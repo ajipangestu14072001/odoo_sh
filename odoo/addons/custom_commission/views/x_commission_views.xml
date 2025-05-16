@@ -1,0 +1,60 @@
+<odoo>
+    <record id="view_x_commission_form" model="ir.ui.view">
+        <field name="name">x.commission.form</field>
+        <field name="model">x.commission</field>
+        <field name="arch" type="xml">
+            <form string="Commission">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="salesperson_id"/>
+                        <field name="percentage"/>
+                        <field name="commission_amount" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="sale_order_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_x_commission_list" model="ir.ui.view">
+        <field name="name">x.commission.list</field>
+        <field name="model">x.commission</field>
+        <field name="arch" type="xml">
+            <list string="Commissions">
+                <field name="name"/>
+                <field name="salesperson_id"/>
+                <field name="percentage"/>
+                <field name="commission_amount"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_x_commission" model="ir.actions.act_window">
+        <field name="name">Commissions</field>
+        <field name="res_model">x.commission</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_custom_commission"
+              name="Sales Commission"
+              parent="sale.sale_menu_root"
+              sequence="50"
+              action="action_x_commission"/>
+
+    <record id="action_sale_order_commission" model="ir.actions.act_window">
+        <field name="name">Sale Order with Commissions</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', 'in', ['sale', 'done'])]</field>
+    </record>
+
+    <menuitem id="menu_sale_order_commission"
+              name="Sale Orders with Commissions"
+              parent="sale.sale_menu_root"
+              sequence="10"
+              action="action_sale_order_commission"/>
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+  <template id="custom_base" name="Custom Base Layout">
+    <t t-name="custom_api.custom_base">
+      <html lang="en">
+        <head>
+          <meta charset="utf-8"/>
+          <title t-esc="page_title or 'My Custom API Page'"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <link rel="stylesheet" href="/custom_api/static/src/css/tailwind.css"/>
+        </head>
+        <body class="bg-gray-50 text-gray-800 font-sans">
+          <div id="wrap">
+            <t t-raw="0"/>
+          </div>
+        </body>
+      </html>
+    </t>
+  </template>
+</odoo>
